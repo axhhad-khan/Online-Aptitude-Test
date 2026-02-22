@@ -94,17 +94,6 @@ The database ensures data consistency and security for the entire system.
 
 ---
 
-## 👨‍💻 Team Members
-
-This project was developed by:
-
-* Abdul Rehman Siddiqui (1336545)
-* Balaj Ahmed Khan (1335831)
-* Ashhad Khan (1335849)
-* Muhammad Rameez (1336479)
-
----
-
 ## 📅 Submission Details
 
 * Course: Advanced Java
