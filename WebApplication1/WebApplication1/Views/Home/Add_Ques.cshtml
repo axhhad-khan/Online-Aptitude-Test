@@ -1,0 +1,93 @@
+﻿@model WebApplication1.Models.tbl_questions
+
+@{
+    ViewBag.Title = "Add_Ques";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1 style="text-align: center; background-color: lightslategrey">Add Questions</h1><br/>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h2 style="color:green">@TempData["ms"]</h2>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.q_fk_cat_id, "q_fk_cat_id", htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <h5>Select Category:</h5>
+            <div class="col-md-10">
+                @Html.DropDownList("q_fk_cat_id", ViewBag.List as SelectList, "--Select--", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.q_fk_cat_id,"", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.q_text, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <h6>Question:</h6>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.q_text, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.q_text, "", new { @class = "text-danger" })
+            </div>
+        </div><br/>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.QA, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <h6>Option 1:</h6>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QA, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.QB, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <h6>Option 2:</h6>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QB, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.QC, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <h6>Option 3:</h6>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QC, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QC, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.QD, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <h6>Option 4:</h6>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QD, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.QcorrectAns, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <h6>Correct Option:(Note:"Option must be in Capital Alphabet e.g: A")</h6>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QcorrectAns, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QcorrectAns, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-dark btn-block" />
+            </div>
+        </div><br />
+    </div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

@@ -1,0 +1,67 @@
+﻿@model WebApplication1.Models.tbl_category
+
+@{
+    ViewBag.Title = "Add_Category";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1 style="text-align: center; background-color: lightslategrey">Add Category</h1><br/>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    @*<h4>Subjects</h4>
+        <hr />*@
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.cat_name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <h5>Category Name:</h5>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cat_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cat_name, "", new { @class = "text-danger" })
+        </div>
+    </div><br />
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.cat_fk_ad_id, "cat_fk_ad_id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("cat_fk_ad_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.cat_fk_ad_id, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-dark btn-block" />
+        </div>
+    </div><br />
+</div>
+}
+
+<div>
+    <table style="overflow:scroll">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th style="padding-right: 30px; padding-left: 30px; ">Name</th>
+                <th style="padding-left: 30px;">Roll No</th>
+                <th>View All Question</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewData["list"] as List<WebApplication1.Models.tbl_category>)
+            {
+                <tr>
+                    <td>@item.cat_id</td>
+                    <td style="padding-right: 30px; padding-left: 30px; ">@item.cat_name</td>
+                    <td style="padding-right: 30px; padding-left: 30px; ">@item.cat_encrytped_string</td>
+                    <td><a class="btn btn-info btn-sm" href="@Url.Action("ViewAllQuestions", new {id=item.cat_id})">View All Question Of this Exam!</a></td>
+                    <td style="padding-left: 30px;"> @Html.ActionLink("Delete", "Del", new { id = item.cat_id })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

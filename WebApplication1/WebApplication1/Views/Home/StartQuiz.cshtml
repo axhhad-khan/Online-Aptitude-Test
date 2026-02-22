@@ -1,0 +1,106 @@
+﻿@model WebApplication1.Models.tbl_questions
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StartQuiz</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+
+    <hr />
+    <h1 style="text-align:center;color:green">Welcome to The Quiz</h1>
+
+    <hr />
+
+    <hr />
+    <h1 style="text-align:center;color:green">Best of Luck:)</h1>
+
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10">
+
+
+                    <div class="row">
+                        <h1>@Html.DisplayFor(x => x.q_text)</h1>
+
+
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+
+                    <div class="row">
+
+
+                        <h5>@Html.RadioButtonFor(x => x.QA, Model.q_id)@Model.QA</h5>
+
+                    </div>
+
+                    <div class="row">
+
+
+                        <h5>@Html.RadioButtonFor(x => x.QB, Model.q_id)@Model.QB</h5>
+
+                    </div>
+                    <div class="row">
+
+
+                        <h5>@Html.RadioButtonFor(x => x.QC, Model.q_id)@Model.QC</h5>
+
+                    </div>
+                    <div class="row">
+
+
+                        <h5>@Html.RadioButtonFor(x => x.QD, Model.q_id)@Model.QD</h5>
+
+                    </div>
+
+                    <div class="row" style="display:none">
+
+                        @Html.TextBoxFor(x => x.QcorrectAns)
+
+                    </div>
+
+
+                    <div class="row">
+                        <input type="submit" value="submit" class="btn btn-success" />
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    }
+
+</body>
+</html>
+

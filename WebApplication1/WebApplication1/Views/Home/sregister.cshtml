@@ -1,0 +1,71 @@
+﻿@model WebApplication1.Models.student
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>sregister</title>
+</head>
+<body>
+    <div class="container-fluid ">
+        <div class="row">
+
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <h2 style="text-align: center;">Student Registeration</h2><br />
+                @if (ViewBag.msg != null)
+                {
+                    <div class="alert alert-danger">
+                        <strong>Error ! </strong> @ViewBag.msg
+                    </div>
+
+                }
+                <div class="container" style="width:40%">
+
+                    @using (@Html.BeginForm("sregister", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="form-group">
+                            <label for="email">Name:</label>                                                       
+                            @*<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">*@
+                            @Html.TextBoxFor(x => x.std_name, htmlAttributes: new { @class = "form-control" })
+                        </div><br />
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            @*<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">*@
+
+                            @Html.PasswordFor(x => x.std_password, htmlAttributes: new { @class = "form-control" })
+                        </div><br />
+                        <div class="form-group">
+                            <label for="pwd">Image:</label>
+                            @*<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">*@
+                            <input type="file" class="form-control btn btn-info" id="imgfile" name="imgfile" />
+                        </div><br/>
+
+                        <input type="submit" value="Register Now !" class="btn btn-dark btn-block" />
+
+                    }
+
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4">
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>

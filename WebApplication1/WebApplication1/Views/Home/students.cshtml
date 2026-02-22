@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebApplication1.Models.student>
+
+@{
+    ViewBag.Title = "students";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1 style="text-align: center; background-color: lightslategrey">Students</h1>
+<br />
+
+
+<h5>
+    @Html.ActionLink("Register Student!", "sregister", new { @class = "btn btn-dark btn-block" })
+</h5><br/>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.std_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_password)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.std_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.std_password)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Dell", new { id = item.std_id })
+            </td>
+        </tr>
+    }
+
+</table>

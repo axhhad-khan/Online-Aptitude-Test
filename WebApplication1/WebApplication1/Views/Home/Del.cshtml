@@ -1,0 +1,49 @@
+﻿@model WebApplication1.Models.tbl_category
+
+@{
+    ViewBag.Title = "Del";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Del</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbl_category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cat_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_encrytped_string)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cat_encrytped_string)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_admin.ad_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_admin.ad_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

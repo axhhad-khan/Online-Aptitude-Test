@@ -1,0 +1,51 @@
+﻿@model WebApplication1.Models.tbl_admin
+
+@{
+    ViewBag.Title = "mlogin";
+} 
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <p style="color:red">@ViewBag.msg</p>
+    <h4>Manager login</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.ad_name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <h5>Manager Name:</h5>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ad_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ad_name, "", new { @class = "text-danger" })
+        </div>
+    </div><br/>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.ad_pass, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <h5>Password:</h5>
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.ad_pass, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ad_pass, "", new { @class = "text-danger" })
+        </div>
+    </div><br/>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Login" class="btn btn-dark btn-block" />
+        </div>
+    </div>
+</div>
+}
+
+
+
+<div>
+  
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
